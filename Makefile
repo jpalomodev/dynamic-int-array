@@ -2,9 +2,20 @@ SHELL = /usr/bin/bash
 .PHONY: clean
 
 CC = g++
-CCFLAGS = -Wall -Wextra -Werror -pedantic -g -std=c++20
+CCFLAGS = -Wall -Wextra -Werror -Wconversion -Wshadow -pedantic -g -std=c++20
 
-main: main.o
-	$(CC) $(CCFLAGS) -o main main.o
+TARGET = DynamicIntArray
 
-clean: rm -f main *.o
+SOURCES = main.cpp DynamicIntArray.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(CCFLAGS) -o $(TARGET) $(OBJECTS)
+
+%.o: %.cpp
+	$(CC) $(CCFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
