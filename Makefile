@@ -2,7 +2,7 @@ SHELL = /usr/bin/bash
 .PHONY: clean
 
 CC = g++
-CCFLAGS = -Wall -Wextra -Werror -Wconversion -Wshadow -pedantic -g -std=c++20
+CCFLAGS = -Wall -Wextra -Werror -Wconversion -Wshadow -pedantic -g -fsanitize=address,undefined -std=c++20
 
 TARGET = DynamicIntArray
 
