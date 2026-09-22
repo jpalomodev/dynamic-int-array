@@ -2,6 +2,9 @@ Author: Josue Palomo
 
 A barebones implementation of a dynamically allocated array of integers.
 
+To run program:
+In project directory, run 'make all' then './DynamicIntArray'
+
 1. A DynamicIntArray object needs to maintain a unique state. No two DynamicIntArray
 objects are allowed to share the same address.
 
