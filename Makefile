@@ -14,7 +14,7 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CCFLAGS) -o $(TARGET) $(OBJECTS)
 
-%.o: %.cpp
+%.o: %.cpp %.hpp
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
