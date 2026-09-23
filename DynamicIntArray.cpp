@@ -81,17 +81,12 @@ void DynamicIntArray::increase_capacity() {
         return;
     }
 
-    int* temp = new int[size_];
+    capacity_ *= 2;
+    int* increased = new int[capacity_];
     for (size_t i = 0; i < size_; i++) {
-        temp[i] = array_[i];
+        increased[i] = array_[i];
     }
 
     delete[] array_;
-    capacity_ *= 2;
-    array_ = new int[capacity_];
-    for (size_t i = 0; i < size_; i++) {
-        array_[i] = temp[i];
-    }
-
-    delete[] temp;
+    array_ = increased;
 }
