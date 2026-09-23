@@ -1,19 +1,25 @@
-Author: Josue Palomo
+# DynamicIntArray
 
-A barebones implementation of a dynamically allocated array of integers.
+A from-scratch implementation/demo of a dynamically allocated array of integers in C++. 
 
-To run program:
-In project directory, run 'make all' then './DynamicIntArray'
+## To Build and Run 
+
+In project directory:
+
+To build, run 'make all'
+
+To run, run './DynamicIntArray'
+
+## Reflection
 
 1. A DynamicIntArray object needs to maintain a unique state. No two DynamicIntArray
-objects are allowed to share the same address.
+objects are allowed to share the same heap memory allocation.
 
 2. The DynamicIntArray class owns a unique int* that points to a dynamically allocated array
 stored in heap memory.
 
-3. DynamicIntArray.size() represents the number of live int objects currently stored in the array.
-DynamicIntArray.capacity() represents the total amount of int objects that the array is capable
-of storing.
+3. DynamicIntArray.size() represents the number of logical int objects currently stored in the array.
+DynamicIntArray.capacity() represents the total live int objects that the array can store.
 
 4. When push_back() causes growth, a new dynamically allocated array is created. A copy operation
 is performed from the previous/full array to the new array, preserving item sequence. Once
