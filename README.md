@@ -26,11 +26,11 @@ is performed from the previous/full array to the new array, preserving item sequ
 complete, the previous/full array is deallocated from memory and DynamicIntArray.array_ is 
 set to point to the new array.
 
-5. Copying the raw address alone would be incorrect because it would lead to improper
-memory operations since we are working with heap memory.
+5. Copying the raw address alone would be incorrect because it would lead to double delete
+/ dangling pointer operations and modifying one object would result in modifying the other as well.
 
 6. The custom copy constructor establishes independent ownership because it ensures no two
-instances of DynamicIntArray share the same memory, leading to undefined behavior.
+instances of DynamicIntArray share the same memory allocation leading to undefined behavior.
 
 7. Copy assignment copies the values of an already existing source object to an already
 existing destination object. Copy constructing copies the values of an already existing source
@@ -49,5 +49,5 @@ since they no longer point to a live object.
 11. When a DynamicIntArray is destroyed, delete[] deallocates the heap memory used to store the
 int array.
 
-12. The main purpose of this exercise was to create a DynamicIntArray capable of simple push_back
-and copy operations while preserving its unique state.
+12. The class invariant is int* array_, which must remain unique for each object of type
+DynamicIntArray no matter the operation performed on the object. 

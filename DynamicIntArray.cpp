@@ -44,7 +44,7 @@ void DynamicIntArray::push_back(int value) {
 }
 
 int& DynamicIntArray::at(std::size_t index) {
-    if (size_ == 0 || index > size_ - 1) {
+    if (size_ == 0 || index >= size_) {
         throw std::out_of_range(
             std::format("Index out of range for array of size {}", size_));
     }
@@ -53,7 +53,7 @@ int& DynamicIntArray::at(std::size_t index) {
 }
 
 const int& DynamicIntArray::at(std::size_t index) const {
-    if (size_ == 0 || index > size_ - 1) {
+    if (size_ == 0 || index >= size_) {
         throw std::out_of_range(
             std::format("Index out of range for array of size {}", size_));
     }

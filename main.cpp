@@ -37,6 +37,18 @@ int main() {
     assert(a.at(4) == 50);
 
     bool exception_thrown = false;
+
+    DynamicIntArray empty;
+    try {
+        empty.at(0);
+    } catch (const std::out_of_range&) {
+        exception_thrown = true;
+    }
+
+    assert(exception_thrown);
+
+    exception_thrown = false;
+
     try {
         a.at(a.size());
     } catch (const std::out_of_range&) {
@@ -74,6 +86,8 @@ int main() {
     c.push_back(25);
 
     c = b;
+    assert(c.size() == b.size());
+    assert(c.capacity() == b.capacity());
     assert(c.at(0) == 10);
     assert(c.at(1) == 20);
     assert(c.at(2) == 200);
@@ -92,9 +106,13 @@ int main() {
     assert(a.at(4) == 50);
 
     c = b = a;
+    assert(c.size() == b.size() && b.size() == a.size());
+    assert(c.capacity() == b.capacity() && b.capacity() == a.capacity());
     for (size_t i = 0; i < a.size(); i++) {
         assert(a.at(i) == b.at(i) && b.at(i) == c.at(i));
     }
+    assert(&a.at(0) != &b.at(0) && &a.at(0) != &c.at(0) &&
+           &b.at(0) != &c.at(0));
 
     const DynamicIntArray& view = a;
     assert(view.at(0) == 10);
